@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime</title>
+    <link href="./index.css" rel="stylesheet">
+</head>
+<body>
+    <div class="box">
+        <h1>HELLO I AM <br><span>AUSY</span></h1>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        let divElem = document.querySelector('.box');
+
+        for(i=0; i<=100; i++){
+            let blockStrng = document.createElement('div');
+        blockStrng.classList.add('blocks');
+            divElem.appendChild(blockStrng);
+        }
+
+        animateBlocks();
+
+        function animateBlocks(){
+            anime({
+                targets:'.blocks',
+                translateX:function(){
+                    return anime.random(-700,700);
+                },
+                translateY:function(){
+                    return anime.random(-500,500);
+                },
+                scale:function(){
+                    return anime.random(1,5);
+                },
+                easing:'linear',
+                duration:3000,
+                delay:anime.stagger(10),
+                complete:animateBlocks
+            })
+        }
+    </script>
+</body>
+</html>
